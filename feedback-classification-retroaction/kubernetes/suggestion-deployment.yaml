@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: suggestion
+  name: suggestion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: suggestion
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: suggestion
+    spec:
+      containers:
+      - image: tbsacr.azurecr.io/suggestion:latest
+        imagePullPolicy: Always
+        name: suggestion
+        resources: 
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+          requests:
+            cpu: 1000m
+            memory: 1024Mi
+
